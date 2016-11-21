@@ -60,7 +60,7 @@ class Block(object):
             raise InvalidColorSpec(s)
 
         return min(255, max(0, value))
-
+    
     @property
     def red(self):
         return self._red
@@ -99,7 +99,7 @@ class Block(object):
 
         """
         if len(color_tuple) != 3:
-            s = 'color_tuple must have three integers. got {0}.'
+            s = 'color_tuple must have xthree integers. got {0}.'
             raise ValueError(s.format(color_tuple))
 
         self.red = color_tuple[0]

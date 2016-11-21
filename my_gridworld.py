@@ -16,7 +16,7 @@ class my_gridworld():
         # decide on obstacle and goal locations
         self.obstacles = [[1,2],[3,4],[2,3],[2,1]]  # impenetrable obstacle locations                
         self.goal = [4,4]     # goal block
-        self.player = [1,4]   # initial location player
+        self.player = [1,1]   # initial location player
 
         # enumerate states based on obstacle locations
         self.states = []
