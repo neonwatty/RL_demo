@@ -126,7 +126,8 @@ class my_gridworld():
                 if loc2[0] > self.grid.height-1 or loc2[0] < 0 or loc2[1] > self.grid.width-1 or loc2[1] < 0:  
                     r_k = int(-1)
                     loc2 = loc
-
+                
+                ### Update Q
                 ind_new = self.states.index(str(loc2[0]) + str(loc2[1]))
                 self.Q_star[ind_old,k] = r_k + gamma*max(self.Q_star[ind_new,:])
                     
