@@ -156,7 +156,13 @@ class my_gridworld():
                 
     # print out
     def show_qmat(self):        
-        df = pd.DataFrame(self.Q_star,columns=['up','down','left','right'], index=self.states)
+        states_print = []
+        for i in range(len(self.states)):
+            s = str(self.states[i])
+            t = str('(') + s[0] + ',' + s[1] + str(')')
+            states_print.append(t)
+            
+        df = pd.DataFrame(self.Q_star,columns=['up','down','left','right'], index=states_print)
         print df.round(3)             
             
     # animate the testing phase based on completed Q-learning cycle
