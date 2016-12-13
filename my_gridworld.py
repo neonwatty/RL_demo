@@ -57,7 +57,45 @@ class my_gridworld():
                         if block != self.goal:
                             self.hazards.append(block)
                     k+=1
-                                
+                                  
+        if grid_size[0:4] == 'maze':
+            
+            df = pd.read_csv('maze_small.csv',header = None)
+            ### initialize grid, agent, obstacles, etc.,            
+            self.width = 13
+            self.height = 11
+       
+            if grid_size == 'maze_large':
+                df = pd.read_csv('maze_large.csv',header = None)
+                ### initialize grid, agent, obstacles, etc.,            
+                self.width = 41
+                self.height = 15
+
+            self.grid = BlockGrid(self.width,self.height, fill=(200, 200, 200))
+
+            # decide on player and goal locations
+            self.goal = [self.height-2, self.width-1]     # goal block
+            self.player = [self.height-2, 0]   # initial location player
+            
+            # index states for Q matrix
+            self.states = []
+            for i in range(self.grid.height):
+                for j in range(self.grid.width):
+                    block = [i,j]
+                    self.states.append(str(i) + str(j))
+
+            # decide on hazard locations
+            self.hazards = []
+            inds = df.values[0]
+            k = 0
+            for i in range(self.grid.height):
+                for j in range(self.grid.width):
+                    if k in inds: 
+                        block = [i,j]
+                        if block != self.goal:
+                            self.hazards.append(block)
+                    k+=1   
+                        
         # initialize action choices
         self.action_choices = [[-1,0],[1,0],[0,-1],[0,1]]
         
